@@ -1,0 +1,30 @@
+/* colors */
+.secondary2 {
+  background-color: #eaeaea;
+  color: #727272;
+}
+.bg-secondary2 {
+  background-color: #eaeaea;
+  color: #212529;
+}
+.text-secondary2 {
+  color: #727272;
+}
+.item-success {
+  border-left: 5px solid #2dce89;
+  border-radius: 0 10px;
+}
+.item-warning {
+  border-left: 5px solid #fb6340;
+  border-radius: 0 10px;
+}
+
+/* icons */
+.upvote-icon:hover, .card-title:hover {
+  cursor: pointer;
+}
+
+/* modals */
+.modal-body img {
+  max-width: 100%;
+}
