@@ -11,10 +11,10 @@ type Props = {
 
 export const ProposalsList = ({ returnProposal, passingProposals, nonPassingProposals }: Props) => {
   const renderPassingProposals = passingProposals.map(proposal => (
-    <ProposalListItem proposal={proposal} key={proposal.id} color="item-success"/>
+    <ProposalListItem proposal={proposal} key={proposal.id} style="item-success"/>
   ));
   const renderNonPassingProposals = nonPassingProposals.map(proposal => (
-    <ProposalListItem proposal={proposal} key={proposal.id} color="item-warning"/>
+    <ProposalListItem proposal={proposal} key={proposal.id} style="item-warning"/>
   ));
   return (<div>  
     {renderPassingProposals}

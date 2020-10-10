@@ -1,7 +1,7 @@
 import React from 'react'
 import { IProposal } from 'interfaces/proposal';
-import { VotingModal } from 'components/modals/votingModal';
-import { ContentModal } from 'components/modals/contentModal';
+import { VotingModal } from 'components/modals/VotingModal';
+import { ContentModal } from 'components/modals/ContentModal';
 import useModal from 'helpers/useModal';
 import { daysLeftFilter, vestsFilter } from 'helpers/filters';
 
@@ -17,20 +17,17 @@ import {
 
 type Props = {
   proposal: IProposal,
-  color: string
+  style: string
 }
 
-export const ProposalListItem = ({
-  proposal,
-  color
-}: Props) => {
+export const ProposalListItem = ({ proposal, style }: Props) => {
 
   const { isOpenVotingModal, toggleVotingModal } = useModal(proposal);
   const { isOpenContentModal, toggleContentModal } = useModal(proposal);
 
   return (
     <div>
-      <Card className={`card-stats mb-4 mt-4 mb-lg-0 ${color}`} key={proposal.id}>
+      <Card className={`card-stats mb-4 mt-4 mb-lg-0 ${style}`} key={proposal.id}>
         <CardBody>
           <Row>
             <Col className="col-11">

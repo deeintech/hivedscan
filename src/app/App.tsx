@@ -1,5 +1,5 @@
-import AppHeader from 'components/header';
-import AppStats from 'components/stats';
+import AppHeader from 'components/Header';
+import AppStats from 'components/Stats';
 import { ProposalsListPage } from 'features/proposals/proposalsList/ProposalsListPage';
 import React from 'react'
 import { BrowserRouter as Router } from "react-router-dom";

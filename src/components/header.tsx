@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "reactstrap";
-import AppNavbar from "./navbar";
+import AppNavbar from "./Navbar";
 
 class AppHeader extends React.Component {
   render() {
