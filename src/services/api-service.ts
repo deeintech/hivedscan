@@ -1,5 +1,5 @@
 import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
-import { HttpPost } from 'interfaces/index';
+import { IHttpPost } from 'interfaces/index';
 
 function getTransformResponse() {
   return [(response) => response];
@@ -20,7 +20,7 @@ function parseResponse(res: AxiosResponse): Promise<any> {
   }
 }
 
-export async function post({ url, body, rpc = true }: HttpPost): Promise<any> {
+export async function post({ url, body, rpc = true }: IHttpPost): Promise<any> {
   if (rpc) {
     body.jsonrpc = body.jsonrpc || '2.0';
     body.id = body.id || 2

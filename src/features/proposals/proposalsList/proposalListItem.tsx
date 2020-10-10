@@ -1,5 +1,5 @@
 import React from 'react'
-import { Proposal } from 'interfaces/proposal';
+import { IProposal } from 'interfaces/proposal';
 import { VotingModal } from 'components/modals/votingModal';
 import { ContentModal } from 'components/modals/contentModal';
 import useModal from 'helpers/useModal';
@@ -16,7 +16,7 @@ import {
 } from "reactstrap";
 
 type Props = {
-  proposal: Proposal,
+  proposal: IProposal,
   color: string
 }
 

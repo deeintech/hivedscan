@@ -1,4 +1,4 @@
-export interface Content {
+export interface IContent {
   id: number;
   author: string;
   permlink: string;
@@ -38,7 +38,7 @@ export interface Content {
   root_title: string;
   pending_payout_value: string;
   total_pending_payout_value: string;
-  active_votes: ActiveVote[];
+  active_votes: IActiveVote[];
   replies: any[];
   author_reputation: string;
   promoted: string;
@@ -46,7 +46,7 @@ export interface Content {
   reblogged_by: any[];
 }
 
-export interface ActiveVote {
+export interface IActiveVote {
   voter: string;
   weight: number;
   rshares: any;
@@ -55,7 +55,7 @@ export interface ActiveVote {
   time: Date;
 }
 
-export interface ContentResult {
+export interface IContentResult {
   id: number;
   author: string;
   body: string;

@@ -1,12 +1,12 @@
 import React from 'react';
-import { Proposal } from 'interfaces/proposal';;
+import { IProposal } from 'interfaces/proposal';;
 import { ProposalListItem } from './proposalListItem';
 import { localeNumberFilter } from 'helpers/filters';
 
 type Props = {
-  passingProposals: Proposal[],
-  nonPassingProposals: Proposal[],
-  returnProposal: Proposal
+  passingProposals: IProposal[],
+  nonPassingProposals: IProposal[],
+  returnProposal: IProposal
 }
 
 export const ProposalsList = ({ returnProposal, passingProposals, nonPassingProposals }: Props) => {

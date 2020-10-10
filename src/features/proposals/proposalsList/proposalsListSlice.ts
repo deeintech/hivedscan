@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Proposal, ProposalsResult } from 'interfaces/proposal';
+import { IProposal, IProposalsResult } from 'interfaces/proposal';
 import { AppThunk } from 'app/store/store';
 import { getProposals } from 'services/proposal-service';
 import { vestsToHive } from 'services/dhive-service';
 
-interface ProposalsState {
-  proposals: Proposal[]
-  passingProposals: Proposal[]
-  nonpassingProposals: Proposal[]
-  returnProposal: {}
+type ProposalsState = {
+  proposals: IProposal[]
+  passingProposals: IProposal[]
+  nonpassingProposals: IProposal[]
+  returnProposal: IProposal
   isLoading: boolean
   error: string | null
 }
@@ -17,7 +17,7 @@ const proposalsInitialState: ProposalsState = {
   proposals: [],
   passingProposals: [],
   nonpassingProposals: [],
-  returnProposal: {},
+  returnProposal: null,
   isLoading: true,
   error: null
 }
@@ -36,7 +36,7 @@ const proposals = createSlice({
   initialState: proposalsInitialState,
   reducers: {
     getProposalsStart: startLoading,
-    getProposalsSuccess(state, { payload }: PayloadAction<ProposalsResult>) {
+    getProposalsSuccess(state, { payload }: PayloadAction<IProposalsResult>) {
       const { proposals, returnProposal } = payload
       state.isLoading = false
       state.error = null

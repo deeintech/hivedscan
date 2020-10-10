@@ -1,24 +1,24 @@
-export interface Proposal {
+export interface IProposal {
   id: number;
   proposal_id: number;
   creator: string;
   receiver: string;
   start_date: Date;
   end_date: Date;
-  daily_pay: DailyPay;
+  daily_pay: IDailyPay;
   subject: string;
   permlink: string;
   total_votes: number;
   status: string;
 }
 
-export interface DailyPay {
+export interface IDailyPay {
   amount: string;
   precision: number;
   nai: string;
 }
 
-export interface ProposalsResult {
-  proposals: Proposal[];
-  returnProposal: Proposal;
+export interface IProposalsResult {
+  proposals: IProposal[];
+  returnProposal: IProposal;
 }

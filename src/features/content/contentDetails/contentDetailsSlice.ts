@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ContentResult } from 'interfaces/content';
+import { IContentResult } from 'interfaces/content';
 import { AppThunk } from 'app/store/store';
 import { getContent } from 'services/content-service';
 
-interface ContentState {
-  content: ContentResult
+type ContentState = {
+  content: IContentResult
   isLoading: boolean
   error: string | null
 }
@@ -29,7 +29,7 @@ const content = createSlice({
   initialState: contentInitialState,
   reducers: {
     getContentStart: startLoading,
-    getContentSuccess(state, { payload }: PayloadAction<ContentResult>) {
+    getContentSuccess(state, { payload }: PayloadAction<IContentResult>) {
       state.isLoading = false
       state.error = null
       state.content = payload

@@ -1,9 +1,9 @@
 import * as apiService from './api-service';
 import config from '../config';
-import { Content, ContentResult } from 'interfaces/content';
+import { IContent, IContentResult } from 'interfaces/content';
 
-export async function getContent(author: string, permlink: string): Promise<ContentResult> {
-  let result: ContentResult;
+export async function getContent(author: string, permlink: string): Promise<IContentResult> {
+  let result: IContentResult;
 
   await apiService.post({
     url: `${config.hiveConfig}`,
@@ -13,7 +13,7 @@ export async function getContent(author: string, permlink: string): Promise<Cont
       params: [author, permlink]
     }
   })
-    .then((data: Content) => {
+    .then((data: IContent) => {
       result = {
         id: data.id,
         author: data.author,

@@ -1,10 +1,10 @@
 import * as apiService from './api-service';
 import config from '../config';
-import { ProposalsResult, Proposal } from 'interfaces/proposal';
+import { IProposalsResult, IProposal } from 'interfaces/proposal';
 
-export async function getProposals(limit: number): Promise<ProposalsResult> {
-  let proposals: Proposal[] = [];
-  let returnProposal: Proposal;
+export async function getProposals(limit: number): Promise<IProposalsResult> {
+  let proposals: IProposal[] = [];
+  let returnProposal: IProposal;
 
   await apiService.post({
     url: `${config.hiveConfig}`,
