@@ -76,3 +76,13 @@ export const fetchProposals = (): AppThunk => async dispatch => {
     dispatch(getProposalsFailure(err.toString()));
   }
 }
+
+export const selectProposalsByStatus = (state: ProposalsState, status: string) => {
+  const proposalsByStatus = state.proposals.filter(p => p.status === status);
+  return proposalsByStatus;
+}
+
+export const searchProposals = (state: ProposalsState, query: string) => {
+  const proposalsByStatus = state.proposals.filter(p => p.creator.startsWith(query) || p.subject.startsWith(query));
+  return proposalsByStatus;
+}

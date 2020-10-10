@@ -1,6 +1,6 @@
 import AppHeader from 'components/header';
 import AppStats from 'components/stats';
-import { ProposalsListPage } from 'features/proposals/proposalsList/proposalsListPage';
+import { ProposalsListPage } from 'features/proposals/proposalsList/ProposalsListPage';
 import React from 'react'
 import { BrowserRouter as Router } from "react-router-dom";
 import { Container } from "reactstrap";

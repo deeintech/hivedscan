@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'app/store/rootReducer';
-import { ProposalsList } from './proposalsList';
+import { ProposalsList } from './ProposalsList';
 import { fetchProposals } from './proposalsListSlice';
 import Skeleton from 'react-loading-skeleton';
 
@@ -17,7 +17,7 @@ export const ProposalsListPage = () => {
   } = useSelector((state: RootState) => state.proposals);
 
   useEffect(() => {
-    dispatch(fetchProposals())
+    dispatch(fetchProposals());
   }, [dispatch]);
 
   if (proposalsError) {

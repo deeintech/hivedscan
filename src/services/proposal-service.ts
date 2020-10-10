@@ -22,7 +22,7 @@ export async function getProposals(limit: number): Promise<IProposalsResult> {
   })
     .then((data) => {
       proposals = data.proposals;
-      returnProposal = proposals.find(p => p.receiver === "steem.dao" && p.id === 0);
+      returnProposal = proposals.find(p => p.receiver === config.hdfAccount && p.id === config.returnProposalId);
     })
     .catch(() => {
       return [];

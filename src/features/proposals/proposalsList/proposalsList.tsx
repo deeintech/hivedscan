@@ -1,6 +1,6 @@
 import React from 'react';
 import { IProposal } from 'interfaces/proposal';;
-import { ProposalListItem } from './proposalListItem';
+import { ProposalListItem } from './ProposalListItem';
 import { localeNumberFilter } from 'helpers/filters';
 
 type Props = {

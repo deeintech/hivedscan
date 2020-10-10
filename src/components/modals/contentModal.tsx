@@ -1,4 +1,4 @@
-import { ContentDetailsPage } from "features/content/contentDetails/contentDetailsPage";
+import { ContentDetailsPage } from "features/content/contentDetails/ContentDetailsPage";
 import React from "react";
 import ReactDOM from "react-dom";
 import {
