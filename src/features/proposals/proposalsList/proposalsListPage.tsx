@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'app/store/rootReducer';
-import { ProposalsList } from './ProposalsList';
-import { fetchProposals } from './proposalsListSlice';
-import Skeleton from 'react-loading-skeleton';
 import AppError from 'components/Error';
 import { Row, Col } from "reactstrap";
+import { fetchProposals } from './proposalsListSlice';
 import useUserInput from 'helpers/useUserInput';
 import useSearchable from 'helpers/useSearchable';
+import { ProposalsList } from './ProposalsList';
+import Skeleton from 'react-loading-skeleton';
 import { AppSearchForm } from 'components/SearchForm';
-import { AppDropdown } from 'components/Dropdown';
+import { AppNav } from 'components/Nav';
 
 export const ProposalsListPage = () => {
   const dispatch = useDispatch();
@@ -27,13 +27,6 @@ export const ProposalsListPage = () => {
   }, [dispatch]);
 
   const searchText = useUserInput("");
-  const dropdown = {
-    navItems: [
-      { name: "Submit a proposal", url: "/newproposal" }
-    ],
-    dropdownHeader: "Sort by",
-    dropdownItems: ["Creator", "Start date", "End date", "Total votes"]
-  };
 
   const searchablePassingProposals = useSearchable(
     passingProposals,
@@ -53,17 +46,17 @@ export const ProposalsListPage = () => {
     );
   };
 
+  const navItems = [
+    { icon: "fas fa-plus-circle", content: "Submit", url: "/newproposal" }
+  ];
+
   const renderSearchWidget = (
     <Row>
       <Col md="6" className="my-1">
         <AppSearchForm {...searchText} />
       </Col>
       <Col md="6" className="my-1 d-flex align-items-md-end flex-column">
-        <AppDropdown
-          items={dropdown.navItems}
-          dropdownHeader={dropdown.dropdownHeader}
-          dropdownItems={dropdown.dropdownItems}
-        />
+        <AppNav items={navItems} />
       </Col>
     </Row>
   );
@@ -72,7 +65,6 @@ export const ProposalsListPage = () => {
     <Skeleton count={5} height={30} duration={3} />
   ) : (
       <div>
-        {renderSearchWidget}
         <ProposalsList
           passingProposals={searchablePassingProposals}
           nonPassingProposals={searchableNonPassingProposals}
@@ -82,6 +74,7 @@ export const ProposalsListPage = () => {
 
   return (
     <div className="mt-3">
+      {renderSearchWidget}
       {renderedList}
     </div>
   );

@@ -22,11 +22,9 @@
   border-radius: 0 10px;
 }
 .nav-bordered {
-  border: 2px solid #525f7f;
   border-radius: 0 10px;
 }
 .nav-pills .nav-link, .input-group-alternative .form-control {
-  border: 2px solid #525f7f;
   border-radius: 0 10px;
 }
 .input-group-alternative {
