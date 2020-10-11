@@ -4,13 +4,19 @@ import { RootState } from 'app/store/rootReducer';
 import { ProposalsList } from './ProposalsList';
 import { fetchProposals } from './proposalsListSlice';
 import Skeleton from 'react-loading-skeleton';
+import AppError from 'components/Error';
+import { Row, Col } from "reactstrap";
+import useUserInput from 'helpers/useUserInput';
+import useSearchable from 'helpers/useSearchable';
+import { AppSearchForm } from 'components/SearchForm';
+import { AppDropdown } from 'components/Dropdown';
 
 export const ProposalsListPage = () => {
   const dispatch = useDispatch();
 
   const {
     passingProposals,
-    nonpassingProposals,
+    nonPassingProposals,
     returnProposal,
     error: proposalsError,
     isLoading
@@ -20,22 +26,58 @@ export const ProposalsListPage = () => {
     dispatch(fetchProposals());
   }, [dispatch]);
 
-  if (proposalsError) {
-    return (
-      <div>
-        <h1>Something went wrong...</h1>
-        <div>{proposalsError.toString()}</div>
-      </div>
-    )
+  const searchText = useUserInput("");
+  const dropdown = {
+    navItems: [
+      { name: "Submit a proposal", url: "/newproposal" }
+    ],
+    dropdownHeader: "Sort by",
+    dropdownItems: ["Creator", "Start date", "End date", "Total votes"]
   };
 
-  let renderedList = isLoading ? (
+  const searchablePassingProposals = useSearchable(
+    passingProposals,
+    searchText.value,
+    (l: any) => [l.subject, l.creator]
+  );
+
+  const searchableNonPassingProposals = useSearchable(
+    nonPassingProposals,
+    searchText.value,
+    (l: any) => [l.subject, l.creator]
+  );
+
+  if (proposalsError) {
+    return (
+      <AppError />
+    );
+  };
+
+  const renderSearchWidget = (
+    <Row>
+      <Col md="6" className="my-1">
+        <AppSearchForm {...searchText} />
+      </Col>
+      <Col md="6" className="my-1 d-flex align-items-md-end flex-column">
+        <AppDropdown
+          items={dropdown.navItems}
+          dropdownHeader={dropdown.dropdownHeader}
+          dropdownItems={dropdown.dropdownItems}
+        />
+      </Col>
+    </Row>
+  );
+
+  const renderedList = isLoading ? (
     <Skeleton count={5} height={30} duration={3} />
   ) : (
-      <ProposalsList
-        passingProposals={passingProposals}
-        nonPassingProposals={nonpassingProposals}
-        returnProposal={returnProposal} />
+      <div>
+        {renderSearchWidget}
+        <ProposalsList
+          passingProposals={searchablePassingProposals}
+          nonPassingProposals={searchableNonPassingProposals}
+          returnProposal={returnProposal} />
+      </div>
     );
 
   return (
