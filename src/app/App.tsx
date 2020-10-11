@@ -9,7 +9,9 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <AppHeader />
+        <AppHeader 
+          title="Decentralized Hive Fund" 
+          subtitle="A list of the latest proposals submitted to the Hive network"/>
         <Container>
           <AppStats />
           <ProposalsListPage />
