@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, InputGroupAddon, InputGroupText, InputGroup } from "reactstrap";
+import { Input, InputGroup, InputGroupAddon, InputGroupText } from "reactstrap";
 
 type Props = {
   value: string,
@@ -8,13 +8,19 @@ type Props = {
 
 export const AppSearchForm = ({ value, onChange }: Props) => {
   return (
-    <InputGroup>
+    <InputGroup className="input-group-alternative">
       <InputGroupAddon addonType="prepend">
         <InputGroupText>
-          <i className="fab fa-searchengin"></i>
+          <i className="fab fa-searchengin" />
         </InputGroupText>
       </InputGroupAddon>
-      <Input placeholder="Search" type="text" value={value} onChange={onChange} />
+      <Input
+        className="form-control-alternative"
+        placeholder="search"
+        type="text"
+        value={value}
+        onChange={onChange}
+      />
     </InputGroup>
   );
 }
