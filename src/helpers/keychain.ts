@@ -1,4 +1,4 @@
-export function hivesignerProposalVote(voteStatus: boolean, username: string, proposalId: string) {
+export function hivesignerProposalVote(voteStatus: boolean, username: string, proposalId: number) {
   if (username !== undefined && username !== "") {
     window.open(
       `https://hivesigner.com/sign/update-proposal-votes?proposal_ids=[${proposalId}]&approve=${voteStatus}`
@@ -8,7 +8,7 @@ export function hivesignerProposalVote(voteStatus: boolean, username: string, pr
   }
 }
 
-export function keychainProposalVote(voteStatus: boolean, username: string, proposalId: string) {
+export function keychainProposalVote(voteStatus: boolean, username: string, proposalId: number) {
   if (window.hive_keychain && username !== undefined && username !== "") {
     hive_keychain.requestUpdateProposalVote(
       username,

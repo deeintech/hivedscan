@@ -10,9 +10,13 @@ import { ProposalsList } from './ProposalsList';
 import Skeleton from 'react-loading-skeleton';
 import { AppSearchForm } from 'components/SearchForm';
 import { AppNav } from 'components/Nav';
+import { SubmitProposalModal } from 'features/proposals/proposalModals/SubmitProposalModal';
+import useModal from 'helpers/useModal';
 
 export const ProposalsListPage = () => {
   const dispatch = useDispatch();
+  const searchText = useUserInput("");
+  const { isOpenNewProposalModal, toggleNewProposalModal } = useModal();
 
   const {
     passingProposals,
@@ -25,8 +29,6 @@ export const ProposalsListPage = () => {
   useEffect(() => {
     dispatch(fetchProposals());
   }, [dispatch]);
-
-  const searchText = useUserInput("");
 
   const searchablePassingProposals = useSearchable(
     passingProposals,
@@ -47,7 +49,7 @@ export const ProposalsListPage = () => {
   };
 
   const navItems = [
-    { icon: "fas fa-plus-circle", content: "Submit", url: "/newproposal" }
+    { icon: "fas fa-plus-circle", content: "Submit", onClick: toggleNewProposalModal }
   ];
 
   const renderSearchWidget = (
@@ -61,7 +63,13 @@ export const ProposalsListPage = () => {
     </Row>
   );
 
-  const renderedList = isLoading ? (
+  const renderNewProposalModal = (
+    <SubmitProposalModal
+      isShowing={isOpenNewProposalModal}
+      hide={toggleNewProposalModal} />
+  );
+
+  const renderList = isLoading ? (
     <Skeleton count={5} height={30} duration={3} />
   ) : (
       <div>
@@ -75,7 +83,8 @@ export const ProposalsListPage = () => {
   return (
     <div className="mt-3">
       {renderSearchWidget}
-      {renderedList}
+      {renderList}
+      {renderNewProposalModal}
     </div>
   );
 }

@@ -27,7 +27,7 @@
 .nav-pills .nav-link, .input-group-alternative .form-control {
   border-radius: 0 10px;
 }
-.input-group-alternative {
+.input-group-alternative, .fancy-input {
   border-radius: 0 10px;
 }
 .input-group-prepend, .input-group-append {
@@ -35,7 +35,7 @@
 }
 
 /* icons */
-.upvote-icon:hover, .card-title:hover {
+.upvote-icon:hover, .card-title:hover, .nav-fill .nav-item:hover {
   cursor: pointer;
 }
 
