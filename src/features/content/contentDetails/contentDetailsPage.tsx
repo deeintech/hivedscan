@@ -5,6 +5,7 @@ import { fetchContent } from './contentDetailsSlice';
 import { DefaultRenderer } from "steem-content-renderer";
 import renderHTML from 'react-render-html';
 import Skeleton from 'react-loading-skeleton';
+import AppError from 'components/Error';
 
 type Props = {
   author: string,
@@ -42,10 +43,7 @@ export const ContentDetailsPage = ({ author, permlink }: Props) => {
 
   if (contentError) {
     return (
-      <div>
-        <h1>Something went wrong...</h1>
-        <div>{contentError.toString()}</div>
-      </div>
+      <AppError />
     )
   };
 
