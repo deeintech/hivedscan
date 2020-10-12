@@ -36,7 +36,7 @@ export const VotingModal = ({ isShowing, hide, proposalId }: Props) => {
         <Label for="username">1. Enter your Hive account:</Label>
         <input
           id="username"
-          className="form-control"
+          className="form-control fancy-input"
           name="username"
           placeholder="username"
           type="text"
@@ -86,7 +86,7 @@ export const VotingModal = ({ isShowing, hide, proposalId }: Props) => {
           isShowing={isShowing}
           hide={hide}
           size="md"
-          header="Submit a proposal"
+          header="Support proposal"
           children={renderForm}
         />
       </React.Fragment>, document.body
