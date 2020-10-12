@@ -1,7 +1,7 @@
 import React from 'react'
 import { IProposal } from 'interfaces/proposal';
-import { VotingModal } from 'components/modals/VotingModal';
-import { ContentModal } from 'components/modals/ContentModal';
+import { VotingModal } from 'features/proposals/proposalModals/VotingModal';
+import { ContentModal } from 'features/content/modals/ContentModal';
 import useModal from 'helpers/useModal';
 import { daysLeftFilter, vestsFilter } from 'helpers/filters';
 
