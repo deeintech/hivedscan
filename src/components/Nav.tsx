@@ -18,7 +18,7 @@ export const AppNav = ({ items }: Props) => {
             < NavItem key={key}>
               <NavLink
                 className="mb-sm-3 mb-md-0"
-                href={item.url}
+                onClick={item.onClick}
               >
                 <i className={`${item.icon} mr-2 text-secondary3`}></i>
                 <span className="text-secondary3">{item.content}</span>
