@@ -14,13 +14,12 @@ export const ProposalsStatsWidget = () => {
       {
         statsCards.map((card, key) => {
           return (
-            <Col lg="6" xl="4">
+            <Col lg="6" xl="4" key={key}>
               <AppCardWidget
                 style={card.style}
                 icon={card.icon}
                 title={card.title}
                 subtitle={card.subtitle}
-                key={key}
               />
             </Col>
           );
