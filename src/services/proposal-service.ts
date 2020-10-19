@@ -1,6 +1,8 @@
 import * as apiService from './api-service';
 import config from '../config';
-import { IProposalsResult, IProposal } from 'interfaces/proposal';
+import { IProposalsResult, IProposal, IProposalResult } from 'interfaces/proposal';
+import { IContentResult } from 'interfaces/content';
+import { getContent } from './content-service';
 
 export async function getProposals(limit: number): Promise<IProposalsResult> {
   let proposals: IProposal[] = [];
@@ -21,8 +23,8 @@ export async function getProposals(limit: number): Promise<IProposalsResult> {
     }
   })
     .then((data) => {
-      proposals = data.proposals;
-      returnProposal = proposals.find(p => p.receiver === config.hdfAccount && p.id === config.returnProposalId);
+      proposals = data.proposals
+      returnProposal = proposals.find(p => p.receiver === config.returnProposalAccount && p.id === config.returnProposalId);
     })
     .catch(() => {
       return [];
@@ -30,5 +32,42 @@ export async function getProposals(limit: number): Promise<IProposalsResult> {
   return {
     proposals,
     returnProposal
+  };
+};
+
+export async function getProposalById(id: number): Promise<IProposalResult> {
+  let proposal: IProposal;
+  let content: IContentResult;
+
+  await apiService.post({
+    url: `${config.hiveConfig}`,
+    body: {
+      method: "call",
+      id: 2,
+      params: [
+        "condenser_api",
+        "find_proposals",
+        [[`${id}`]]
+      ]
+    }
+  })
+    .then((data) => {
+      proposal = data[0];
+      return proposal;
+    })
+    .then(async (p) => {
+      try {
+        content = await getContent(p.creator, p.permlink);
+        return content;
+      } catch (error) {
+        console.log(error);
+      }
+    })
+    .catch(() => {
+      return {};
+    })
+  return {
+    proposal,
+    content
   };
 };
