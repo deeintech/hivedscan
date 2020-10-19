@@ -1,6 +1,6 @@
 import { Client, DatabaseAPI, DynamicGlobalProperties } from '@hiveio/dhive';
 
-const client = new Client(process.env.REACT_APP_HIVE_MAINNET);
+const client = new Client(process.env.REACT_APP_HIVE_MAINNET, { rebrandedApi: true });
 const db = new DatabaseAPI(client);
 
 let globalProperties: DynamicGlobalProperties;
