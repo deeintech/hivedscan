@@ -4,7 +4,7 @@ import { VotingModal } from 'features/proposals/proposalModals/VotingModal';
 import { ContentModal } from 'features/content/modals/ContentModal';
 import useModal from 'helpers/useModal';
 import { daysLeftFilter, vestsFilter } from 'helpers/filters';
-
+import { Link } from "react-router-dom";
 import {
   Card,
   CardBody,
@@ -21,7 +21,6 @@ type Props = {
 }
 
 export const ProposalListItem = ({ proposal, style }: Props) => {
-
   const { isOpenVotingModal, toggleVotingModal } = useModal(proposal);
   const { isOpenContentModal, toggleContentModal } = useModal(proposal);
 
@@ -47,7 +46,8 @@ export const ProposalListItem = ({ proposal, style }: Props) => {
                 <Col className="col-sm-12 col-md-11">
                   <CardTitle className="mb-0">
                     <a className="text mr-2" onClick={toggleContentModal}>{proposal.subject}</a>
-                    <a className="text display-5" onClick={toggleContentModal}><u>(#{proposal.proposal_id})</u></a>
+                    <a className="text display-5" onClick={toggleContentModal}></a>
+                    <Link to={`/proposal/${proposal.proposal_id}`}><u>(#{proposal.proposal_id})</u></Link>
                     {proposal.receiver === "steem.dao" ?
                       <span>
                         <Badge color="success" className="ml-2" id="returnTooltip">Return proposal</Badge>
