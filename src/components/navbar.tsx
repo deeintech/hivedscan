@@ -20,7 +20,7 @@ class AppNavbar extends React.Component {
         expand="lg"
       >
         <Container>
-          <NavbarBrand href="">
+          <NavbarBrand href="/">
             Hived Scan
           </NavbarBrand>
           <button
@@ -60,12 +60,12 @@ class AppNavbar extends React.Component {
             </div>
             <Nav className="ml-lg-auto" navbar>
               <NavItem>
-                <NavLink href="/fund">
+                <NavLink href="/">
                   Fund
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/profile">
+                <NavLink href="/info">
                   Info
                 </NavLink>
               </NavItem>

@@ -1,23 +1,25 @@
 import AppHeader from 'components/Header';
 import { ProposalsListPage } from 'features/proposals/proposalsList/ProposalsListPage';
-import { ProposalsStatsWidget } from 'features/proposals/proposalsList/ProposalsStatsWidget';
-import React from 'react'
-import { BrowserRouter as Router } from "react-router-dom";
+import React from 'react';
 import { Container } from "reactstrap";
+import { Route } from "react-router-dom";
+import { ProposalDetailsPage } from 'features/proposals/proposalDetails/ProposalDetailsPage';
+import { InfoDetailsPage } from 'features/info/InfoDetailsPage';
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <AppHeader 
-          title="Decentralized Hive Fund" 
-          subtitle="A list of the latest proposals submitted to the Hive network"/>
-        <Container>
-          <ProposalsStatsWidget />
+    <div>
+      <AppHeader
+        title="Decentralized Hive Fund"
+        subtitle="A list of the latest proposals submitted to the Hive network" />
+      <Container>
+        <Route path="/" exact={true} render={() => (
           <ProposalsListPage />
-        </Container>
-      </div>
-    </Router>
+        )} />
+        <Route path={`/proposal/:id`} component={ProposalDetailsPage} />
+        <Route path={"/info"} exact={true} component={InfoDetailsPage} />
+      </Container>
+    </div>
   );
 }
 export default App;

@@ -6,14 +6,16 @@ import App from './App';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import '../assets/styles/argon.css';
 import '../assets/styles/app.css';
+import { BrowserRouter as Router } from "react-router-dom";
 
 const render = () => {
   ReactDOM.render(
     <Provider store={store}>
-      <App />
+      <Router>
+        <App />
+      </Router>
     </Provider>,
     document.getElementById('root')
   )
 }
-
-render()
+render();
