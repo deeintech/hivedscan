@@ -1,3 +1,5 @@
+import { IContentResult } from "./content";
+
 export interface IProposal {
   id: number;
   proposal_id: number;
@@ -10,6 +12,11 @@ export interface IProposal {
   permlink: string;
   total_votes: number;
   status: string;
+}
+
+export interface IProposalResult {
+  proposal: IProposal;
+  content: IContentResult;
 }
 
 export interface IDailyPay {
