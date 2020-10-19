@@ -10,7 +10,7 @@ db.getDynamicGlobalProperties().then(g => {
 
 export function getHivePerMvest() {
   let total_vesting_fund_hive = parseFloat(
-    globalProperties.total_vesting_fund_steem.toString()
+    globalProperties.total_vesting_fund_hive.toString()
   );
   let total_vesting_shares = parseFloat(
     globalProperties.total_vesting_shares.toString()
@@ -21,6 +21,7 @@ export function getHivePerMvest() {
 }
 
 export function vestsToHive(vests: number) {
-  let result = vests*Number(getHivePerMvest())/1000000000;
+  let result = vests * Number(getHivePerMvest()) / 1000000000;
+  console.log(result);
   return result;
 }

@@ -2,7 +2,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IProposal, IProposalsResult } from 'interfaces/proposal';
 import { AppThunk } from 'app/store/store';
 import { getProposals } from 'services/proposal-service';
-import { vestsToHive } from 'services/dhive-service';
 
 type ProposalsState = {
   proposals: IProposal[]
@@ -40,17 +39,7 @@ const proposals = createSlice({
       const { proposals, returnProposal } = payload;
       state.isLoading = false;
       state.error = null;
-      state.proposals = proposals
-        .sort((a, b) => b.total_votes - a.total_votes)
-        .map(p => {
-          p.total_votes = vestsToHive(p.total_votes)
-          p.daily_pay = {
-            amount: (Number(p.daily_pay.amount) / 1000).toLocaleString(),
-            precision: p.daily_pay.precision,
-            nai: p.daily_pay.nai
-          };
-          return p;
-        });
+      state.proposals = proposals;
       state.passingProposals = proposals.filter(p => p.total_votes >= returnProposal.total_votes);
       state.nonPassingProposals = proposals.filter(p => p.total_votes < returnProposal.total_votes);
       state.returnProposal = returnProposal;
