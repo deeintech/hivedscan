@@ -28,4 +28,7 @@ export interface IDailyPay {
 export interface IProposalsResult {
   proposals: IProposal[];
   returnProposal: IProposal;
+  totalProposals: number;
+  totalBudget: number;
+  dailyBudget: number;
 }

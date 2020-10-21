@@ -3,11 +3,14 @@ import config from '../config';
 import { IProposalsResult, IProposal, IProposalResult } from 'interfaces/proposal';
 import { IContentResult } from 'interfaces/content';
 import { getContent } from 'services/content-service';
-import { vestsToHive } from 'services/dhive-service';
+import { vestsToHive, getAccount } from 'services/dhive-service';
 
 export async function getProposals(limit: number): Promise<IProposalsResult> {
   let proposals: IProposal[] = [];
   let returnProposal: IProposal;
+  let totalProposals: number;
+  let totalBudget: number;
+  let dailyBudget: number;
 
   await apiService.post({
     url: `${config.hiveConfig}`,
@@ -27,7 +30,7 @@ export async function getProposals(limit: number): Promise<IProposalsResult> {
       proposals = data.proposals
         .sort((a, b) => b.total_votes - a.total_votes)
         .map(p => {
-          p.total_votes = vestsToHive(p.total_votes)
+          p.total_votes = vestsToHive(p.total_votes) || p.total_votes
           p.daily_pay = {
             amount: (Number(p.daily_pay.amount) / 1000).toLocaleString(),
             precision: p.daily_pay.precision,
@@ -37,13 +40,30 @@ export async function getProposals(limit: number): Promise<IProposalsResult> {
         });
       returnProposal = proposals
         .find(p => p.receiver === config.returnProposalAccount && p.id === config.returnProposalId);
+      totalProposals = proposals.length;
+      return data;
+    })
+    .then(async () => {
+      try {
+        await getAccount("hive.fund").then(acc => {
+          if (acc[0].hbd_balance) {
+            totalBudget = parseFloat(acc[0].hbd_balance.toString());
+            dailyBudget = (totalBudget / 100);
+          }
+        })
+      } catch (error) {
+        console.log(error);
+      }
     })
     .catch(() => {
       return [];
     })
   return {
     proposals,
-    returnProposal
+    returnProposal,
+    totalProposals,
+    totalBudget,
+    dailyBudget
   };
 };
 

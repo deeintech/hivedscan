@@ -1,7 +1,6 @@
 import React from 'react';
 import { IProposal } from 'interfaces/proposal';;
 import { ProposalListItem } from './ProposalListItem';
-import { localeNumberFilter } from 'helpers/filters';
 
 type Props = {
   passingProposals: IProposal[],
@@ -9,7 +8,7 @@ type Props = {
   returnProposal: IProposal
 }
 
-export const ProposalsList = ({ returnProposal, passingProposals, nonPassingProposals }: Props) => {
+export const ProposalsList = ({ passingProposals, nonPassingProposals }: Props) => {
   const renderPassingProposals = passingProposals.map(proposal => (
     <ProposalListItem proposal={proposal} key={proposal.id} style="item-success"/>
   ));
@@ -18,7 +17,7 @@ export const ProposalsList = ({ returnProposal, passingProposals, nonPassingProp
   ));
   return (<div>  
     {renderPassingProposals}
-    <h3 className="mt-4 text-center">Insufficient funds ({localeNumberFilter(returnProposal.total_votes)} HP)</h3>
+    <h3 className="mt-4 text-center">Insufficient funds</h3>
     {renderNonPassingProposals}
   </div>
   )

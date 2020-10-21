@@ -23,7 +23,10 @@ export const ProposalsListPage = () => {
     passingProposals,
     nonPassingProposals,
     returnProposal,
-    error: proposalsError,
+    totalProposals,
+    totalBudget,
+    dailyBudget,
+    proposalsError,
     isLoading
   } = useSelector((state: RootState) => state.proposals);
 
@@ -71,7 +74,11 @@ export const ProposalsListPage = () => {
   );
 
   const renderStatsWidget = (
-    <ProposalsStatsWidget />
+    <ProposalsStatsWidget
+      totalProposals={totalProposals}
+      totalBudget={totalBudget}
+      dailyBudget={dailyBudget}
+    />
   );
 
   const renderList = isLoading ? (

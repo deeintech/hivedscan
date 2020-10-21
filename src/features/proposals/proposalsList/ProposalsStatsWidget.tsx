@@ -2,11 +2,17 @@ import AppCardWidget from 'components/CardWidget';
 import React from 'react';
 import { Row, Col } from "reactstrap";
 
-export const ProposalsStatsWidget = () => {
+type Props = {
+  totalProposals: number,
+  totalBudget: number;
+  dailyBudget: number;
+}
+
+export const ProposalsStatsWidget = ( {totalProposals, totalBudget, dailyBudget }: Props)  => {
   const statsCards = [
-    { style: "bg-danger", icon: "fas fa-battery-full", title: "Total budget", subtitle: "559,060 HBD" },
-    { style: "bg-warning", icon: "fas fa-battery-half", title: "Daily Budget", subtitle: "5,591 HBD" },
-    { style: "bg-default", icon: "fas fa-bullseye", title: "Total Proposals", subtitle: "31" }
+    { style: "bg-danger", icon: "fas fa-battery-full", title: "Total budget", subtitle: `${totalBudget ? totalBudget.toLocaleString() : 0} HBD` },
+    { style: "bg-warning", icon: "fas fa-battery-half", title: "Daily Budget", subtitle: `${dailyBudget ? dailyBudget.toLocaleString() : 0} HBD` },
+    { style: "bg-default", icon: "fas fa-bullseye", title: "Total Proposals", subtitle: totalProposals ? totalProposals : 0 }
   ];
 
   const renderedWidget = (
@@ -19,7 +25,7 @@ export const ProposalsStatsWidget = () => {
                 style={card.style}
                 icon={card.icon}
                 title={card.title}
-                subtitle={card.subtitle}
+                subtitle={card.subtitle.toString()}
               />
             </Col>
           );

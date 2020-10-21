@@ -8,6 +8,9 @@ type ProposalsState = {
   passingProposals: IProposal[]
   nonPassingProposals: IProposal[]
   returnProposal: IProposal
+  totalProposals: number
+  totalBudget: number
+  dailyBudget: number
   isLoading: boolean
   error: string | null
 }
@@ -17,6 +20,9 @@ const proposalsInitialState: ProposalsState = {
   passingProposals: [],
   nonPassingProposals: [],
   returnProposal: null,
+  totalProposals: 0,
+  totalBudget: 0,
+  dailyBudget: 0,
   isLoading: true,
   error: null
 }
@@ -36,13 +42,16 @@ const proposals = createSlice({
   reducers: {
     getProposalsStart: startLoading,
     getProposalsSuccess(state, { payload }: PayloadAction<IProposalsResult>) {
-      const { proposals, returnProposal } = payload;
+      const { proposals, returnProposal, totalProposals, totalBudget, dailyBudget } = payload;
       state.isLoading = false;
       state.error = null;
       state.proposals = proposals;
       state.passingProposals = proposals.filter(p => p.total_votes >= returnProposal.total_votes);
       state.nonPassingProposals = proposals.filter(p => p.total_votes < returnProposal.total_votes);
       state.returnProposal = returnProposal;
+      state.totalProposals = totalProposals;
+      state.totalBudget = totalBudget;
+      state.dailyBudget = dailyBudget;
     },
     getProposalsFailure: loadingFailed,
   }

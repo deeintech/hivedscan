@@ -8,7 +8,11 @@ db.getDynamicGlobalProperties().then(g => {
   globalProperties = g;
 });
 
-export function getHivePerMvest() {
+export function getAccount(account: string) {
+  return db.getAccounts([account]);
+}
+
+export async function getHivePerMvest() {
   let total_vesting_fund_hive = parseFloat(
     globalProperties.total_vesting_fund_hive.toString()
   );
@@ -22,6 +26,5 @@ export function getHivePerMvest() {
 
 export function vestsToHive(vests: number) {
   let result = vests * Number(getHivePerMvest()) / 1000000000;
-  console.log(result);
   return result;
 }
