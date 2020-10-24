@@ -35,12 +35,12 @@
 }
 
 /* icons */
-.upvote-icon:hover, .card-title:hover, .nav-fill .nav-item:hover {
+.upvote-icon:hover, .card-title:hover, .nav-fill .nav-item:hover, a.nav-link {
   cursor: pointer;
 }
 
 /* modals */
-.modal-body img {
+.modal-body img, .container img {
   max-width: 100%;
 }
 
