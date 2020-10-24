@@ -1,8 +1,12 @@
 .DS_Store
 .env
 .vscode
+.github
+.firebaserc
+.firebase
 
 /node_modules
 /build
 
 yarn-error.log
+firebase.json
