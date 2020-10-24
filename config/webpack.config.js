@@ -20,6 +20,9 @@ module.exports = {
     extensions: ['.js', '.jsx', '.json', '.ts', '.tsx', '.css', '.scss'],
     modules: ['src', 'node_modules']
   },
+  devServer: {
+    historyApiFallback: true,
+  },
   plugins: [
     new Dotenv(),
     new HtmlWebpackPlugin({
