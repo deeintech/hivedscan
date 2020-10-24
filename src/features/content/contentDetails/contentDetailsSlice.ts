@@ -42,7 +42,7 @@ export const {
   getContentStart,
   getContentSuccess,
   getContentFailure
-} = content.actions
+} = content.actions;
 
 export default content.reducer;
 
