@@ -15,7 +15,7 @@ function App() {
       <Route path="/fund" exact={true} render={() => (
         <AppHeader
           title="Decentralized Hive"
-          subtitle="Hive Fund, etc" />
+          subtitle="A list of the latest proposals submitted to the Hive network" />
       )} />
       <Container>
         <Route path="/" exact={true} render={() => (
