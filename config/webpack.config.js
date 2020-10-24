@@ -1,9 +1,11 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const BUILD_PATH = path.resolve(__dirname, '../build');
+const IMAGE_PATH = path.resolve(__dirname, '../build/assets/img');
 
 module.exports = {
   mode: 'development',
@@ -25,6 +27,11 @@ module.exports = {
   },
   plugins: [
     new Dotenv(),
+    new CopyPlugin({
+      patterns: [
+        { from: path.resolve(__dirname, '../src/assets/img'), to: IMAGE_PATH }
+      ]
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../public/index.html')
     }),
