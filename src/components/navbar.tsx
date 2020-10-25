@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import useModal from 'helpers/useModal';
+// import useModal from 'helpers/useModal';
 import {
   UncontrolledCollapse,
   NavbarBrand,
@@ -12,10 +12,10 @@ import {
   Row,
   Col
 } from "reactstrap";
-import LoginModal from "features/login/loginModals/LoginModal";
+// import LoginModal from "features/user/userModals/LoginModal";
 
 export const AppNavbar = () => {
-  const { isOpenLoginModal, toggleLoginModal } = useModal();
+  // const { isOpenLoginModal, toggleLoginModal } = useModal();
 
   return (
     <Navbar
@@ -67,22 +67,17 @@ export const AppNavbar = () => {
                 Fund
                 </NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink href="/info">
-                Info
-                </NavLink>
-            </NavItem>
-            <NavItem>
+            {/* <NavItem>
               <NavLink onClick={toggleLoginModal}>
                 Sign in
                 </NavLink>
-            </NavItem>
+            </NavItem> */}
           </Nav>
         </UncontrolledCollapse>
       </Container>
-      <LoginModal
+      {/* <LoginModal
         isShowing={isOpenLoginModal}
-        hide={toggleLoginModal} />
+        hide={toggleLoginModal} /> */}
     </Navbar>
   );
 }
