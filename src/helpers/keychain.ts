@@ -1,3 +1,5 @@
+import { saveLoginInfo } from "./localStorage";
+
 export function hivesignerProposalVote(voteStatus: boolean, username: string, proposalId: number) {
   if (username !== undefined && username !== "") {
     window.open(
@@ -15,7 +17,7 @@ export function keychainProposalVote(voteStatus: boolean, username: string, prop
       JSON.stringify([proposalId]),
       voteStatus,
       [],
-      (response) => {
+      (response: any) => {
         if (response.success) {
           return response;
         } else {
@@ -54,5 +56,25 @@ export function keychainCreateProposal(username: string, receiver: string, subje
     );
   } else {
     return;
+  }
+}
+
+export function loginKeychain (user: string) {
+  if (window.hive_keychain && user !== "") {
+    hive_keychain.requestSignBuffer(
+      user,
+      `{login: "${user}"}`,
+      "Active",
+      (response: any) => {
+        if (response.success) {
+          saveLoginInfo(user);
+          return response;
+        } else {
+          return response.success;
+        }
+      }
+    );
+  } else {
+    return [];
   }
 }
