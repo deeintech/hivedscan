@@ -1,10 +1,11 @@
-import React from 'react'
+import React from 'react';
 import { IProposal } from 'interfaces/proposal';
 import { VotingModal } from 'features/proposals/proposalModals/VotingModal';
 import { ContentModal } from 'features/content/contentModals/ContentModal';
 import useModal from 'helpers/useModal';
 import { daysLeftFilter } from 'helpers/filters';
 import { Link } from "react-router-dom";
+
 import {
   Card,
   CardBody,
@@ -47,7 +48,6 @@ export const ProposalListItem = ({ proposal, style }: Props) => {
                   <CardTitle className="mb-0">
                     <a className="text mr-2" onClick={toggleContentModal}>{proposal.subject}</a>
                     <a className="text display-5" onClick={toggleContentModal}></a>
-                    {/* <u>(#{proposal.proposal_id})</u> */}
                     <Link to={`/proposal/${proposal.proposal_id}`}><u>(#{proposal.proposal_id})</u></Link>
                     {proposal.receiver === "steem.dao" ?
                       <span>

@@ -47,7 +47,7 @@ export const ProposalDetailsPage = () => {
     );
 
   return (
-    <Container className="py-5">
+    <Container className="my-5 py-5 bg-white">
       {renderProposal}
       {renderContent}
     </Container>

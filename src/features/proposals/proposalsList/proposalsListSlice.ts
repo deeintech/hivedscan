@@ -45,7 +45,7 @@ const proposals = createSlice({
       const { proposals, returnProposal, totalProposals, totalBudget, dailyBudget } = payload;
       state.isLoading = false;
       state.error = null;
-      state.proposals = proposals;
+      state.proposals = proposals
       state.passingProposals = proposals.filter(p => p.total_votes >= returnProposal.total_votes);
       state.nonPassingProposals = proposals.filter(p => p.total_votes < returnProposal.total_votes);
       state.returnProposal = returnProposal;

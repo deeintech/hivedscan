@@ -3,16 +3,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'app/store/rootReducer';
 import AppError from 'components/Error';
 import { Row, Col } from "reactstrap";
-import { fetchProposals } from './proposalsListSlice';
-import useUserInput from 'helpers/useUserInput';
-import useSearchable from 'helpers/useSearchable';
 import { ProposalsList } from './ProposalsList';
 import Skeleton from 'react-loading-skeleton';
 import { AppSearchForm } from 'components/SearchForm';
 import { AppNav } from 'components/Nav';
 import { SubmitProposalModal } from 'features/proposals/proposalModals/SubmitProposalModal';
-import useModal from 'helpers/useModal';
 import { ProposalsStatsWidget } from './ProposalsStatsWidget';
+import useModal from 'helpers/useModal';
+import useUserInput from 'helpers/useUserInput';
+import useSearchable from 'helpers/useSearchable';
+import { fetchProposals } from './proposalsListSlice';
 
 export const ProposalsListPage = () => {
   const dispatch = useDispatch();
@@ -33,6 +33,10 @@ export const ProposalsListPage = () => {
   useEffect(() => {
     dispatch(fetchProposals());
   }, [dispatch]);
+
+  // useEffect(() => {
+  //   dispatch(fetchUser("dmitrydao"));
+  // }, [dispatch]);
 
   const searchablePassingProposals = useSearchable(
     passingProposals,
@@ -88,7 +92,8 @@ export const ProposalsListPage = () => {
         <ProposalsList
           passingProposals={searchablePassingProposals}
           nonPassingProposals={searchableNonPassingProposals}
-          returnProposal={returnProposal} />
+          returnProposal={returnProposal}
+        />
       </div>
     );
 
