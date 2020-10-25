@@ -73,7 +73,7 @@ export const VotingModal = ({ isShowing, hide, proposalId }: Props) => {
           type="button"
           onClick={handleSubmit(onKeychainVote)}
         >
-          Vote with <img className="icon icon-sm ml-1" src="src/assets/img/keychain.png" />
+          Vote with <img className="icon icon-sm ml-1" src="assets/img/keychain.png" />
         </Button>
       </FormGroup>
     </Form>
