@@ -63,11 +63,16 @@ export const AppNavbar = () => {
           </div>
           <Nav className="ml-lg-auto" navbar>
             <NavItem>
+              <NavLink target="_blank" href="https://discord.gg/eXxA5BN">
+                Discord
+                </NavLink>
+            </NavItem>
+            {/*<NavItem>
               <NavLink href="/fund">
                 Fund
                 </NavLink>
             </NavItem>
-            {/* <NavItem>
+            <NavItem>
               <NavLink onClick={toggleLoginModal}>
                 Sign in
                 </NavLink>
