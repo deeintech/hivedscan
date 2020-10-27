@@ -1,22 +1,23 @@
-export function vestsFilter(value: number) {
+export function vestsFilter(value: string) {
   if (value !== undefined) {
-    var thousand = 1000;
-    var million = 1000000;
-    var billion = 1000000000;
-    var trillion = 1000000000000;
-    if (value < thousand) {
-      return String(value.toFixed(0));
+    let valueN = Number(value);
+    let thousand = 1000;
+    let million = 1000000;
+    let billion = 1000000000;
+    let trillion = 1000000000000;
+    if (valueN < thousand) {
+      return String(valueN.toFixed(0));
     }
-    if (value >= thousand && value <= million) {
-      return Math.abs(value / thousand).toFixed(2) + "k";
+    if (valueN >= thousand && valueN <= million) {
+      return Math.abs(valueN / thousand).toFixed(2) + "k";
     }
-    if (value >= million && value <= billion) {
-      return Math.abs(value / million).toFixed(2) + "k";
+    if (valueN >= million && valueN <= billion) {
+      return Math.abs(valueN / million).toFixed(2) + "k";
     }
-    if (value >= billion && value <= trillion) {
-      return Math.abs(value / billion).toFixed(2) + "m";
+    if (valueN >= billion && valueN <= trillion) {
+      return Math.abs(valueN / billion).toFixed(2) + "m";
     } else {
-      return Math.abs(value / trillion).toFixed(0) + "b";
+      return Math.abs(valueN / trillion).toFixed(0) + "b";
     }
   }
 }

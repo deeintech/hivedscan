@@ -15,7 +15,6 @@ import {
   Badge,
   UncontrolledTooltip
 } from "reactstrap";
-
 type Props = {
   proposal: IProposal,
   style: string
@@ -24,7 +23,7 @@ type Props = {
 export const ProposalListItem = ({ proposal, style }: Props) => {
   const { isOpenVotingModal, toggleVotingModal } = useModal(proposal);
   const { isOpenContentModal, toggleContentModal } = useModal(proposal);
-
+  
   return (
     <div>
       <Card className={`card-stats mb-4 mt-4 mb-lg-0 ${style}`} key={proposal.id}>
@@ -86,7 +85,7 @@ export const ProposalListItem = ({ proposal, style }: Props) => {
                         : null
                       }
                     </span>
-                    <Badge className="secondary2 mr-2">{vestsFilter(proposal.total_votes)} HP</Badge>
+                    <Badge className="secondary2 mr-2">{vestsFilter(proposal.total_votes.toString())} HP</Badge>
                     <Badge className="secondary2 mr-2">{proposal.daily_pay.amount} HBD/day</Badge>
                     <Badge className="secondary2 mr-2">{daysLeftFilter(proposal.end_date)}</Badge>
                   </p>
