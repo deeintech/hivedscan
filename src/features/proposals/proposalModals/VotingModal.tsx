@@ -66,7 +66,7 @@ export const VotingModal = ({ isShowing, hide, proposalId }: Props) => {
           type="button"
           onClick={handleSubmit(onHivesignerVote)}
         >
-          Vote with <img className="icon icon-sm ml-1" src="src/assets/img/hivesigner.svg" />
+          Vote with <img className="icon icon-sm ml-1" src="assets/img/hivesigner.svg" />
         </Button>
         <Button
           color="default"
