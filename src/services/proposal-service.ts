@@ -31,9 +31,9 @@ export async function getProposals(limit: number): Promise<IProposalsResult> {
       try {
         proposals = data.proposals
           .sort((a, b) => b.total_votes - a.total_votes)
-          .map((p) => {
+          .map((p: any) => {
              vestsToHive(p.total_votes, globalProperties).then(votes => {
-              p.total_votes = votes.toFixed();
+              p.total_votes = parseFloat(votes.toString());
               return votes;
             })
             p.daily_pay = {
