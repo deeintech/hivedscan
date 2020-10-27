@@ -27,25 +27,32 @@ export async function getProposals(limit: number): Promise<IProposalsResult> {
     }
   })
     .then((data) => {
-      proposals = data.proposals
-        .sort((a, b) => b.total_votes - a.total_votes)
-        .map(p => {
-          p.total_votes = vestsToHive(p.total_votes) || p.total_votes
-          p.daily_pay = {
-            amount: (Number(p.daily_pay.amount) / 1000).toLocaleString(),
-            precision: p.daily_pay.precision,
-            nai: p.daily_pay.nai
-          };
-          return p;
-        });
-      returnProposal = proposals
-        .find(p => p.receiver === config.returnProposalAccount && p.id === config.returnProposalId);
-      totalProposals = proposals.length;
-      return data;
+      try {
+        proposals = data.proposals
+          .sort((a, b) => b.total_votes - a.total_votes)
+          .map((p) => {
+             vestsToHive(p.total_votes).then(v => {
+              p.total_votes = v;
+              return v;
+            })
+            p.daily_pay = {
+              amount: (Number(p.daily_pay.amount) / 1000).toLocaleString(),
+              precision: p.daily_pay.precision,
+              nai: p.daily_pay.nai
+            };
+            return p;
+          });
+        returnProposal = proposals
+          .find(p => p.receiver === config.returnProposalAccount && p.id === config.returnProposalId);
+        totalProposals = proposals.length;
+        return data;
+      } catch (error) {
+        console.log(error);
+      }
     })
     .then(async () => {
       try {
-        await getAccount("hive.fund").then(acc => {
+        await getAccount(config.hdfAccount).then(acc => {
           if (acc[0].hbd_balance) {
             totalBudget = parseFloat(acc[0].hbd_balance.toString());
             dailyBudget = (totalBudget / 100);

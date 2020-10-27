@@ -3,7 +3,7 @@ import { IProposal } from 'interfaces/proposal';
 import { VotingModal } from 'features/proposals/proposalModals/VotingModal';
 import { ContentModal } from 'features/content/contentModals/ContentModal';
 import useModal from 'helpers/useModal';
-import { daysLeftFilter } from 'helpers/filters';
+import { daysLeftFilter, vestsFilter } from 'helpers/filters';
 import { Link } from "react-router-dom";
 
 import {
@@ -86,7 +86,7 @@ export const ProposalListItem = ({ proposal, style }: Props) => {
                         : null
                       }
                     </span>
-                    <Badge className="secondary2 mr-2">{(proposal.total_votes)} HP</Badge>
+                    <Badge className="secondary2 mr-2">{vestsFilter(proposal.total_votes)} HP</Badge>
                     <Badge className="secondary2 mr-2">{proposal.daily_pay.amount} HBD/day</Badge>
                     <Badge className="secondary2 mr-2">{daysLeftFilter(proposal.end_date)}</Badge>
                   </p>
