@@ -3,7 +3,7 @@ import config from '../config';
 import { IProposalsResult, IProposal, IProposalResult } from 'interfaces/proposal';
 import { IContentResult } from 'interfaces/content';
 import { getContent } from 'services/content-service';
-import { vestsToHive, getAccount } from 'services/dhive-service';
+import { vestsToHive, getAccount, getGlobalProperties } from 'services/dhive-service';
 
 export async function getProposals(limit: number): Promise<IProposalsResult> {
   let proposals: IProposal[] = [];
@@ -11,6 +11,7 @@ export async function getProposals(limit: number): Promise<IProposalsResult> {
   let totalProposals: number;
   let totalBudget: number;
   let dailyBudget: number;
+  let globalProperties = await getGlobalProperties();
 
   await apiService.post({
     url: `${config.hiveConfig}`,
@@ -31,9 +32,9 @@ export async function getProposals(limit: number): Promise<IProposalsResult> {
         proposals = data.proposals
           .sort((a, b) => b.total_votes - a.total_votes)
           .map((p) => {
-             vestsToHive(p.total_votes).then(v => {
-              p.total_votes = v;
-              return v;
+             vestsToHive(p.total_votes, globalProperties).then(votes => {
+              p.total_votes = votes.toFixed();
+              return votes;
             })
             p.daily_pay = {
               amount: (Number(p.daily_pay.amount) / 1000).toLocaleString(),
