@@ -16,7 +16,7 @@ export function keychainProposalVote(voteStatus: boolean, username: string, prop
       username,
       JSON.stringify([proposalId]),
       voteStatus,
-      [],
+      JSON.stringify([]),
       (response: any) => {
         if (response.success) {
           return response;
@@ -43,7 +43,7 @@ export function keychainCreateProposal(username: string, receiver: string, subje
       Number(daily_pay).toFixed(3) + " HBD",
       new Date(start).toISOString(),
       new Date(end).toISOString(),
-      [],
+      JSON.stringify([]),
       (response) => {
         if (response.success) {
           return response;
