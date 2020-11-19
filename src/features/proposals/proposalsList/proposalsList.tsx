@@ -1,5 +1,5 @@
 import React from 'react';
-import { IProposal } from 'interfaces/proposal';;
+import { IProposal } from 'interfaces/proposals/proposal';;
 import { ProposalListItem } from './ProposalListItem';
 
 type Props = {

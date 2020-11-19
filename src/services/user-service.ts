@@ -1,6 +1,6 @@
 import * as apiService from './api-service';
 import config from '../config';
-import { IUser } from 'interfaces/user';
+import { IUser } from 'interfaces/proposals/user';
 
 export async function getUser(name: string): Promise<IUser> {
   let result: IUser;

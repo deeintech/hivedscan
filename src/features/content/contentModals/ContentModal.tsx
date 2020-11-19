@@ -1,6 +1,6 @@
 import AppModal from "components/Modal";
 import { ContentDetailsPage } from "features/content/contentDetails/ContentDetailsPage";
-import { IProposal } from "interfaces/proposal";
+import { IProposal } from "interfaces/proposals/proposal";
 import React from "react";
 import ReactDOM from "react-dom";
 

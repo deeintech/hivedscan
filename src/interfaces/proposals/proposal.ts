@@ -1,4 +1,4 @@
-import { IContentResult } from "./content";
+import { IContentResult } from "../content";
 
 export interface IProposal {
   id: number;

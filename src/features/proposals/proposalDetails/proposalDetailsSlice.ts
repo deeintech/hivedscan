@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk } from 'app/store/store';
 import { IContentResult } from 'interfaces/content';
-import { IProposal, IProposalResult } from 'interfaces/proposal';
+import { IProposal, IProposalResult } from 'interfaces/proposals/proposal';
 import { getProposalById } from 'services/proposal-service';
 
 type ProposalState = {

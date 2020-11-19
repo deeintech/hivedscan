@@ -1,4 +1,4 @@
-import { IProposal } from 'interfaces/proposal';
+import { IProposal } from 'interfaces/proposals/proposal';
 import { useState } from 'react';
 
 const useModal = (p?: IProposal) => {

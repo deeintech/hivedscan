@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk } from 'app/store/store';
-import { IUser } from 'interfaces/user';
+import { IUser } from 'interfaces/proposals/user';
 import { getUser } from 'services/user-service';
 
 type UserState = {

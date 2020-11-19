@@ -1,6 +1,6 @@
 import * as apiService from './api-service';
 import config from '../config';
-import { IProposalsResult, IProposal, IProposalResult } from 'interfaces/proposal';
+import { IProposalsResult, IProposal, IProposalResult } from 'interfaces/proposals/proposal';
 import { IContentResult } from 'interfaces/content';
 import { getContent } from 'services/content-service';
 import { vestsToHive, getAccount, getGlobalProperties } from 'services/dhive-service';

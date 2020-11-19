@@ -1,5 +1,5 @@
 import React from 'react';
-import { IProposal } from 'interfaces/proposal';
+import { IProposal } from 'interfaces/proposals/proposal';
 import { VotingModal } from 'features/proposals/proposalModals/VotingModal';
 import { ContentModal } from 'features/content/contentModals/ContentModal';
 import useModal from 'helpers/useModal';
