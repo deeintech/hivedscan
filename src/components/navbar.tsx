@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import useModal from 'helpers/useModal';
 import {
   UncontrolledCollapse,
   NavbarBrand,
@@ -12,11 +11,8 @@ import {
   Row,
   Col
 } from "reactstrap";
-// import LoginModal from "features/user/userModals/LoginModal";
 
 export const AppNavbar = () => {
-  // const { isOpenLoginModal, toggleLoginModal } = useModal();
-
   return (
     <Navbar
       className="navbar-horizontal navbar-dark bg-danger"
@@ -63,26 +59,18 @@ export const AppNavbar = () => {
           </div>
           <Nav className="ml-lg-auto" navbar>
             <NavItem>
-              <NavLink target="_blank" href="https://discord.gg/eXxA5BN">
-                Discord
-                </NavLink>
-            </NavItem>
-            {/*<NavItem>
               <NavLink href="/fund">
-                Fund
+                Hive Fund
                 </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink onClick={toggleLoginModal}>
-                Sign in
+              <NavLink href="/hive-engine">
+                Hive Engine
                 </NavLink>
-            </NavItem> */}
+            </NavItem>
           </Nav>
         </UncontrolledCollapse>
       </Container>
-      {/* <LoginModal
-        isShowing={isOpenLoginModal}
-        hide={toggleLoginModal} /> */}
     </Navbar>
   );
 }

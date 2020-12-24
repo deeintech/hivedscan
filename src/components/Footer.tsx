@@ -15,7 +15,7 @@ class AppFooter extends React.Component {
             <div className="col-md-6">
               <ul className="nav nav-footer justify-content-end">
                 <li className="nav-item">
-                  <a href="https://dmitrydao.github.io" className="nav-link keychainify-checked" target="_blank">Blog</a>
+                  <a href="https://markofdao.com" className="nav-link keychainify-checked" target="_blank">Blog</a>
                 </li>
                 <li className="nav-item">
                   <a href="https://twitter.com/dmitrydao" className="nav-link keychainify-checked" target="_blank">Twitter</a>
