@@ -1,5 +1,5 @@
 /* colors */
-.secondary2 {
+.secondary2, .badge a {
   background-color: #eaeaea;
   color: #727272;
 }
