@@ -3,12 +3,14 @@ import proposalsReducer from 'features/proposals/proposalsList/proposalsListSlic
 import proposalReducer from 'features/proposals/proposalDetails/proposalDetailsSlice';
 import contentReducer from 'features/content/contentDetails/contentDetailsSlice';
 import userReducer from 'features/user/userDetails/userDetailsSlice';
+import latestHeTransactions from 'features/hive-engine/transactionsList/transactionsListSlice';
 
 const rootReducer = combineReducers({
   proposals: proposalsReducer,
   proposal: proposalReducer,
   content: contentReducer,
-  user: userReducer
+  user: userReducer,
+  latestHeTransactions: latestHeTransactions
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
