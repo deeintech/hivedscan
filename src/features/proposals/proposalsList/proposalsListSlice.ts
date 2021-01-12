@@ -67,7 +67,7 @@ export default proposals.reducer;
 export const fetchProposals = (): AppThunk => async dispatch => {
   try {
     dispatch(getProposalsStart());
-    const proposals = await getProposals(50);
+    const proposals = await getProposals(200);
     dispatch(getProposalsSuccess(proposals));
   } catch (err) {
     dispatch(getProposalsFailure(err.toString()));

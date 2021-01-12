@@ -30,6 +30,7 @@ export async function getProposals(limit: number): Promise<IProposalsResult> {
     .then((data) => {
       try {
         proposals = data.proposals
+          .filter((p: any) => p.status !== "expired")
           .sort((a, b) => b.total_votes - a.total_votes)
           .map((p: any) => {
              vestsToHive(p.total_votes, globalProperties).then(votes => {

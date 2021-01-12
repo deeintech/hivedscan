@@ -34,10 +34,6 @@ export const ProposalsListPage = () => {
     dispatch(fetchProposals());
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   dispatch(fetchUser("dmitrydao"));
-  // }, [dispatch]);
-
   const searchablePassingProposals = useSearchable(
     passingProposals,
     searchText.value,
